@@ -11,12 +11,6 @@
 
 // 进一步要求：Could you do it in O(n) time and O(1) space?
 
-import sun.java2d.pipe.SpanClipRenderer;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -26,7 +20,7 @@ import java.util.Stack;
  * }
  */
 
-public class PalindromeLinkedList {
+public class Solution201023 {
     public class ListNode {
         int val;
         ListNode next;
@@ -100,13 +94,13 @@ public class PalindromeLinkedList {
     }
 
     public static void main(String[] args) {
-        PalindromeLinkedList p = new PalindromeLinkedList();
-        PalindromeLinkedList.ListNode head1=p.new ListNode(1);
-        PalindromeLinkedList.ListNode node1=p.new ListNode(2);
-        PalindromeLinkedList.ListNode head2=p.new ListNode(1);
-        PalindromeLinkedList.ListNode node2=p.new ListNode(2);
-        PalindromeLinkedList.ListNode node3=p.new ListNode(2);
-        PalindromeLinkedList.ListNode node4=p.new ListNode(1);
+        Solution201023 p = new Solution201023();
+        Solution201023.ListNode head1=p.new ListNode(1);
+        Solution201023.ListNode node1=p.new ListNode(2);
+        Solution201023.ListNode head2=p.new ListNode(1);
+        Solution201023.ListNode node2=p.new ListNode(2);
+        Solution201023.ListNode node3=p.new ListNode(2);
+        Solution201023.ListNode node4=p.new ListNode(1);
 
         head1.next=node1;
         head2.next=node2;
