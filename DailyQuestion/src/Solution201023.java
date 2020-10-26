@@ -44,7 +44,6 @@ public class Solution201023 {
             if(temp.val!=stack1.pop())return false;
             temp=temp.next;
         }
-        return true;
         */
 
         /*
