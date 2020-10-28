@@ -27,6 +27,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Solution201027 {
     public class TreeNode {
@@ -45,6 +46,7 @@ public class Solution201027 {
     List<Integer> preorderlist=new ArrayList<Integer>();
 
     public List<Integer> preorderTraversal(TreeNode root) {
+        /*
         //递归方法
         if(root==null)return preorderlist;
         preorderlist.add(root.val);
@@ -54,6 +56,22 @@ public class Solution201027 {
         if(root.right!=null){
             preorderTraversal(root.right);
         }
+        return preorderlist;
+        */
+
+        //迭代方法，用stack维护上一层的根节点，遍历完成后返回
+        if(root==null)return new ArrayList<Integer>();
+        Stack<TreeNode> stack=new Stack<TreeNode>();
+        while(!stack.isEmpty() || root!=null){
+            while(root!=null){
+                preorderlist.add(root.val);
+                stack.push(root);
+                root=root.left;
+            }
+            root=stack.pop();
+            root=root.right;
+        }
+
         return preorderlist;
     }
 
