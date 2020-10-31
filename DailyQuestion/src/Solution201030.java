@@ -53,6 +53,7 @@ public class Solution201030 {
                 }
             }
         }
+        return 0;
     }
 
     public int dfs(int[][] grid,int x,int y){
