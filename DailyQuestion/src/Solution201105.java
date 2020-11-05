@@ -41,7 +41,8 @@ import java.util.Stack;
 public class Solution201105 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if(!wordList.contains(endWord))return 0;
-        wordList.sort(String::compareTo);
+        return 0;
+
 
 
 
