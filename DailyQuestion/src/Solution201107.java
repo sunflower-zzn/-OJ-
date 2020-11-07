@@ -44,7 +44,7 @@ public class Solution201107 {
         //归并分而治之，拆分待排序数据，递归实现
         if(left==right)return 0;
         int mid=(left+right)/2;
-        int resLeft=mergesort(arr,0,mid,lower,upper);
+        int resLeft=mergesort(arr,left,mid,lower,upper);
         int resRight=mergesort(arr,mid+1,right,lower,upper);
         int res=resLeft+resRight;
 
@@ -63,17 +63,25 @@ public class Solution201107 {
         }
 
         //归并，使用传统方法，维护i和j两个变量即可
+        long[] temp=new long[right-left+1];
+        int t=0;
         i=left;
         int j=mid+1;
         while(i<=mid&&j<=right){
-            if(arr[i]<=arr[j])
+            if(arr[i]<=arr[j])temp[t++]=arr[i++];
+            else temp[t++]=arr[j++];
         }
+        while(i<=mid){temp[t++]=arr[i++];}
+        while(j<=right){temp[t++]=arr[j++];}
+        t=0;
+        while(t<temp.length){arr[left++]=temp[t++];}
 
+        return res;  //返回当前节点满足条件的区间和个数
+    }
 
-
-
-
-
-        return res;
+    public static void main(String[] args) {
+        int[] arr={-2,5,-1};
+        Solution201107 s=new Solution201107();
+        s.countRangeSum(arr,-2,2);
     }
 }
