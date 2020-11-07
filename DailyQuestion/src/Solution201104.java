@@ -23,10 +23,10 @@
 
     0 <= intervals.length <= 104
     intervals[i].length == 2
-    0 <= intervals[i][0] <= intervals[i][1] <= 105
-    intervals is sorted by intervals[i][0] in ascending order.
+    0 <= intervals[i][0] <= intervals[i][1] <= 105
+    intervals is sorted by intervals[i][0] in ascending order.
     newInterval.length == 2
-    0 <= newInterval[0] <= newInterval[1] <= 105
+    0 <= newInterval[0] <= newInterval[1] <= 105
 
 */
 

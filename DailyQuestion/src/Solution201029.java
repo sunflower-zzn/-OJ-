@@ -19,7 +19,7 @@
         4
        / \
       9   0
-     / \
+     / \
     5   1
     Output: 1026
     Explanation:

@@ -2,7 +2,7 @@
 // 127 Word Ladder
 
 /*
-    给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
+    给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
     - 每次转换只能改变一个字母。
     - 转换过程中的中间单词必须是字典中的单词。
 
@@ -28,9 +28,9 @@
     endWord = "cog"
     wordList = ["hot","dot","dog","lot","log"]
 
-    Output: 0
+    Output: 0
 
-    Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+    Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 
 */
 

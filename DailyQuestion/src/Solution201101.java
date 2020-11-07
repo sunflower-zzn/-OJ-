@@ -13,8 +13,8 @@
     wordDict = ["cat", "cats", "and", "sand", "dog"]
     Output:
     [
-      "cats and dog",
-      "cat sand dog"
+     "cats and dog",
+     "cat sand dog"
     ]
 
     Input:
@@ -22,9 +22,9 @@
     wordDict = ["apple", "pen", "applepen", "pine", "pineapple"]
     Output:
     [
-      "pine apple pen apple",
-      "pineapple pen apple",
-      "pine applepen apple"
+     "pine apple pen apple",
+     "pineapple pen apple",
+     "pine applepen apple"
     ]
     Explanation: Note that you are allowed to reuse a dictionary word.
 
