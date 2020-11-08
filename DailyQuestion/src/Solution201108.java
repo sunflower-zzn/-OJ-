@@ -31,6 +31,8 @@ import java.util.List;
 
 public class Solution201108 {
     public int maxProfit(int[] prices) {
+        /*
+        //逻辑思路，找到所有的峰值和谷值，然后做差
         if(prices.length<2)return 0;
         List<Integer> top=new ArrayList<Integer>();
         List<Integer> foot=new ArrayList<Integer>();
@@ -47,5 +49,13 @@ public class Solution201108 {
         int result=0;
         for(int i=0;i<Math.min(top.size(),foot.size());i++){result+=top.get(i)-foot.get(i);}
         return result;
+        */
+
+        //贪心思路，只要后一天的价格比前一天的高就为收益
+        int res=0;
+        for(int i=1;i<prices.length;i++){
+            if(prices[i]>prices[i-1])res+=prices[i]-prices[i-1];
+        }
+        return res;
     }
 }
