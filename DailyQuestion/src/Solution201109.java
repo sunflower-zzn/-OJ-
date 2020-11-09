@@ -32,15 +32,14 @@ import java.util.List;
 
 public class Solution201109 {
     public int[][] kClosest(int[][] points, int K) {
-        List<int[]> positions = new ArrayList<int[]>(Arrays.asList(points));
-        positions.sort(Comparator.comparingInt(this::distance_squ));
-        int[][] res=new int[K][2];
-        for(int i=0;i<K;i++){res[i]=positions.get(i);}
-        return res;
+        //直接排序，在抽取K个
+        Arrays.sort(points, new Comparator<int[]>() {
+            public int compare(int[] point1, int[] point2) {
+                return (point1[0] * point1[0] + point1[1] * point1[1]) - (point2[0] * point2[0] + point2[1] * point2[1]);
+            }
+        });
+        return Arrays.copyOfRange(points, 0, K);
 
-    }
-
-    private int distance_squ(int[] position){
-        return (int) (Math.pow(position[0],2)+Math.pow(position[1],2));
+        //维护一个大小为K的大根堆，先进K个数，如果后来进来的数比根小，就把堆顶提出，将新数加入
     }
 }
