@@ -41,5 +41,13 @@ public class Solution201109 {
         return Arrays.copyOfRange(points, 0, K);
 
         //维护一个大小为K的大根堆，先进K个数，如果后来进来的数比根小，就把堆顶提出，将新数加入
+
+
+
+
+
+
+
+        //快速选择思路
     }
 }
