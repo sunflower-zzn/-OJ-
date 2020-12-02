@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Solution201115 {
     public String removeKdigits(String num, int k) {
-        //遍历数组，如果比后一位大就可以删除，如果全是升序就删掉最后一位，做k次
+        //遍历数组，如果比前一位大就可以删除，如果全是升序就删掉最后一位，做k次
         if(num.length()==k)return "0";
         StringBuffer ans=new StringBuffer(num);
         while(k>0){
