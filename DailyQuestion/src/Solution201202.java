@@ -44,7 +44,7 @@ public class Solution201202 {
                 list2=findMaxSubArrays(nums2,k-i);
             }
         }
-
+        return null;
     }
 
     public List<Integer> findMaxSubArrays(int[] nums,int length){
@@ -78,6 +78,6 @@ public class Solution201202 {
 
     public List<Integer> joinList( List<Integer> list1, List<Integer> list2){
         //拼接两个list，保证组合成的数字和最大，且保持相对顺序
-
+        return null;
     }
 }
