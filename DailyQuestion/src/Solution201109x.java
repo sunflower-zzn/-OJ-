@@ -30,7 +30,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class Solution201109 {
+public class Solution201109x {
     public int[][] kClosest(int[][] points, int K) {
         //直接排序，在抽取K个
         Arrays.sort(points, new Comparator<int[]>() {
@@ -41,11 +41,6 @@ public class Solution201109 {
         return Arrays.copyOfRange(points, 0, K);
 
         //维护一个大小为K的大根堆，先进K个数，如果后来进来的数比根小，就把堆顶提出，将新数加入
-
-
-
-
-
 
 
         //快速选择思路

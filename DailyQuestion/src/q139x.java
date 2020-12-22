@@ -24,7 +24,7 @@
 
 import java.util.List;
 
-public class q139 {
+public class q139x {
     public boolean wordBreak(String s, List<String> wordDict) {
 
 

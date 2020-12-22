@@ -15,7 +15,7 @@
     输入数组中的所有数字都在32位整数的表示范围内。
 */
 
-public class Solution201128 {
+public class Solution201128x {
     public int reversePairs(int[] nums) {
         //暴力方法，会导致超时！
         /*int res = 0;
@@ -35,7 +35,7 @@ public class Solution201128 {
 
     public static void main(String[] args) {
         int[] nums = {2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647};
-        Solution201128 s = new Solution201128();
+        Solution201128x s = new Solution201128x();
         s.reversePairs(nums);
     }
 }

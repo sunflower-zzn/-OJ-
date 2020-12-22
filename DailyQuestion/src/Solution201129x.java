@@ -22,7 +22,7 @@
     1 <= A[i] <= 10^6
 */
 
-public class Solution201129 {
+public class Solution201129x {
     public int largestPerimeter(int[] A) {
         return 0;
     }

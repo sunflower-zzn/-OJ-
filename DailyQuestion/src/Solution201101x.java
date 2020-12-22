@@ -36,5 +36,5 @@
 
 */
 
-public class Solution201101 {
+public class Solution201101x {
 }

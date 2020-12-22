@@ -18,21 +18,20 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution201130 {
+public class Solution201130x {
     public String reorganizeString(String S) {
-        Map<Character,Integer> map=new HashMap<>();
-        for(char ch:S.toCharArray()){
-            if(!map.containsKey(ch)){
-                map.put(ch,0);
-            }
-            else{
-                map.put(ch,map.get(ch)+1);
+        Map<Character, Integer> map = new HashMap<>();
+        for (char ch : S.toCharArray()) {
+            if (!map.containsKey(ch)) {
+                map.put(ch, 0);
+            } else {
+                map.put(ch, map.get(ch) + 1);
             }
         }
-        int maxnum=0;
-        for(char ch:S.toCharArray()){
-            if(map.get(ch)>maxnum){
-                maxnum=map.get(ch);
+        int maxnum = 0;
+        for (char ch : S.toCharArray()) {
+            if (map.get(ch) > maxnum) {
+                maxnum = map.get(ch);
             }
         }
         //return maxnum>S.length()/2;

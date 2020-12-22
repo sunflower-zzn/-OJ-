@@ -38,14 +38,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 
-public class Solution201105 {
+public class Solution201105x {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if(!wordList.contains(endWord))return 0;
+        if (!wordList.contains(endWord)) return 0;
         return 0;
-
-
-
-
 
 
     }

@@ -9,18 +9,21 @@
 */
 
 
-public class Solution201124 {
+public class Solution201124x {
     public class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
     public int countNodes(TreeNode root) {
         //最朴素的方法，递归遍历
-        if(root==null)return 0;
-        return countNodes(root.left)+countNodes(root.right)+1;
+        if (root == null) return 0;
+        return countNodes(root.left) + countNodes(root.right) + 1;
 
         //利用完全二叉树的特点
 
