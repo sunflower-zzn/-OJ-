@@ -24,17 +24,17 @@ import java.util.*;
 public class Solution201127 {
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         //不能直接暴力遍历，会出现超时，用哈希映射存放部分加和值以及出现次数
-        int res=0;
-        Map<Integer,Integer> ab=new HashMap<>();
-        for(int num1:A){
-            for(int num2:B){
-                ab.put(num1+num2,ab.getOrDefault(num1+num2,0)+1);
+        int res = 0;
+        Map<Integer, Integer> ab = new HashMap<>();
+        for (int num1 : A) {
+            for (int num2 : B) {
+                ab.put(num1 + num2, ab.getOrDefault(num1 + num2, 0) + 1);
             }
         }
-        for(int num1:C){
-            for(int num2:D){
-                if(ab.containsKey(-(num1+num2))){
-                    res+=ab.get(-(num1+num2));
+        for (int num1 : C) {
+            for (int num2 : D) {
+                if (ab.containsKey(-(num1 + num2))) {
+                    res += ab.get(-(num1 + num2));
                 }
             }
         }

@@ -22,19 +22,21 @@ import java.util.Set;
 public class Solution201213 {
     public boolean containsDuplicate(int[] nums) {
         //利用哈希表，复杂度O(N)
+
         /*
-        Set<Integer> set=new HashSet<>();
-        for(int i=0;i<nums.length;i++){
-            if(set.contains(nums[i]))return true;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(nums[i])) return true;
             set.add(nums[i]);
         }
         return false;
         */
 
+
         //利用数组排序判断重复元素,复杂度O(NlogN)
         Arrays.sort(nums);
-        for(int i=0;i<nums.length-1;i++){
-            if(nums[i]==nums[i+1])return true;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) return true;
         }
         return false;
     }

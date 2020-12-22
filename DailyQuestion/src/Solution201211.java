@@ -37,51 +37,48 @@ public class Solution201211 {
     public String predictPartyVictory(String senate) {
         /*
         //非常笨的循环方案
-        List<Character> list=new ArrayList<>();
-        int R_num=0;
-        int D_num=0;
-        for(char ch : senate.toCharArray()){
-            if(ch=='R')R_num++;
+        List<Character> list = new ArrayList<>();
+        int R_num = 0;
+        int D_num = 0;
+        for (char ch : senate.toCharArray()) {
+            if (ch == 'R') R_num++;
             else D_num++;
             list.add(ch);
         }
-        while(R_num>0&&D_num>0){
-            int index=0;
-            while(index<list.size()){
-                if(list.get(index)=='R'){
-                    if(list.indexOf('D')==-1){
-                        if(list.indexOf('d')==-1)break;
+        while (R_num > 0 && D_num > 0) {
+            int index = 0;
+            while (index < list.size()) {
+                if (list.get(index) == 'R') {
+                    if (list.indexOf('D') == -1) {
+                        if (list.indexOf('d') == -1) break;
                         else list.remove(Character.valueOf('d'));
                         index--;
-                    }
-                    else{
+                    } else {
                         list.remove(Character.valueOf('D'));
                     }
                     D_num--;
-                    list.set(index,'r');
+                    list.set(index, 'r');
                     index++;
-                }
-                else{
-                    if(list.indexOf('R')==-1){
-                        if(list.indexOf('r')==-1)break;
+                } else {
+                    if (list.indexOf('R') == -1) {
+                        if (list.indexOf('r') == -1) break;
                         else list.remove(Character.valueOf('r'));
                         index--;
-                    }
-                    else{
+                    } else {
                         list.remove(Character.valueOf('R'));
                     }
                     R_num--;
-                    list.set(index,'d');
+                    list.set(index, 'd');
                     index++;
                 }
             }
-            for(int i=0;i<list.size();i++){
-                if(list.get(i)=='r')list.set(i,'R');
-                if(list.get(i)=='d')list.set(i,'D');
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == 'r') list.set(i, 'R');
+                if (list.get(i) == 'd') list.set(i, 'D');
             }
         }
 
-        if(R_num>0)return "Radiant";
+        if (R_num > 0) return "Radiant";
         else return "Dire";
         */
 
@@ -90,33 +87,31 @@ public class Solution201211 {
         //每次执行完权力后就出队列，并放到最后
         //如果被ban的话就直接对方参议员出队列
         //直到某一个队列为空
-        Queue<Integer> radiantQueue=new LinkedList<Integer>();
-        Queue<Integer> direQueue=new LinkedList<Integer>();
+        Queue<Integer> radiantQueue = new LinkedList<Integer>();
+        Queue<Integer> direQueue = new LinkedList<Integer>();
         //队列是一种特殊的线性表，它只允许在表的前端进行删除操作，而在表的后端进行插入操作。
         //LinkedList类实现了Queue接口，因此我们可以把LinkedList当成Queue来用。
-        char[] chs=senate.toCharArray();
-        int len=chs.length;
-        for(int i=0;i<len;i++){
-            if(chs[i]=='D'){
+        char[] chs = senate.toCharArray();
+        int len = chs.length;
+        for (int i = 0; i < len; i++) {
+            if (chs[i] == 'D') {
                 direQueue.offer(i);
-            }
-            else{
+            } else {
                 radiantQueue.offer(i);
             }
         }
-        while(direQueue.size()>0&&radiantQueue.size()>0){
-            if(direQueue.peek()<radiantQueue.peek()){
+        while (direQueue.size() > 0 && radiantQueue.size() > 0) {
+            if (direQueue.peek() < radiantQueue.peek()) {
                 radiantQueue.poll();
-                int t=direQueue.poll();
-                direQueue.offer(t+len);
-            }
-            else {
+                int t = direQueue.poll();
+                direQueue.offer(t + len);
+            } else {
                 direQueue.poll();
-                int t=radiantQueue.poll();
-                radiantQueue.offer(t+len);
+                int t = radiantQueue.poll();
+                radiantQueue.offer(t + len);
             }
         }
-        if(radiantQueue.size()>0)return "Radiant";
+        if (radiantQueue.size() > 0) return "Radiant";
         else return "Dire";
     }
 }

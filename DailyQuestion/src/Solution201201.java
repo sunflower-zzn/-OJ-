@@ -31,39 +31,33 @@ public class Solution201201 {
         */
 
         //使用二分法，复杂度logn
-        if(nums.length==0)return new int[]{-1,-1};
-        int[] res=new int[2];
-        res[0]=findhead(nums,0,nums.length-1,target);
-        res[1]=findtail(nums,0,nums.length-1,target);
+        if (nums.length == 0) return new int[]{-1, -1};
+        int[] res = new int[2];
+        res[0] = findhead(nums, 0, nums.length - 1, target);
+        res[1] = findtail(nums, 0, nums.length - 1, target);
         return res;
     }
 
-    private int findhead(int[] nums,int left,int right,int target){
-        if(left==right){
-            return nums[left]==target?left:-1;
+    private int findhead(int[] nums, int left, int right, int target) {
+        if (left == right) {
+            return nums[left] == target ? left : -1;
         }
-        int mid=(left+right)/2;
-        int leftres=findhead(nums,left,mid,target);
-        int rightres=findhead(nums,mid+1,right,target);
-        if(leftres!=-1)return leftres;
+        int mid = (left + right) / 2;
+        int leftres = findhead(nums, left, mid, target);
+        int rightres = findhead(nums, mid + 1, right, target);
+        if (leftres != -1) return leftres;
         return rightres;
     }
 
-    private int findtail(int[] nums,int left,int right,int target){
-        if(left==right){
-            return nums[left]==target?left:-1;
+    private int findtail(int[] nums, int left, int right, int target) {
+        if (left == right) {
+            return nums[left] == target ? left : -1;
         }
-        int mid=(left+right)/2;
-        int leftres=findtail(nums,left,mid,target);
-        int rightres=findtail(nums,mid+1,right,target);
-        if(rightres!=-1)return rightres;
+        int mid = (left + right) / 2;
+        int leftres = findtail(nums, left, mid, target);
+        int rightres = findtail(nums, mid + 1, right, target);
+        if (rightres != -1) return rightres;
         return leftres;
-    }
-
-    public static void main(String[] args) {
-        int[] nums={5,7,7,8,8,10};
-        Solution201201 s =new Solution201201();
-        s.searchRange(nums,8);
     }
 
 }

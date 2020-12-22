@@ -31,14 +31,14 @@ public class Solution201217 {
         //dp[i,1]=max(dp[i-1,0]-price[i],dp[i-1,1])
         //初始化：dp[0,0]=0;dp[0,1]=-price[0];
         //注意到，只有dp[i,0]和dp[i,1]需要关注，可以用两个变量来存放优化
-        int buy,sell;
-        sell=0;
-        buy=-prices[0];
-        for(int i=1;i<prices.length;i++){
-            int tempsell=sell;
-            int tempbuy=buy;
-            sell=Math.max(tempsell,tempbuy+prices[i]-fee);
-            buy= Math.max(tempsell-prices[i],tempbuy);
+        int buy, sell;
+        sell = 0;
+        buy = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            int tempsell = sell;
+            int tempbuy = buy;
+            sell = Math.max(tempsell, tempbuy + prices[i] - fee);
+            buy = Math.max(tempsell - prices[i], tempbuy);
         }
         //最后一天持有股票肯定少于最后一天不持有股票的收益【因为多花了钱】
         return sell;
@@ -49,13 +49,13 @@ public class Solution201217 {
         //最大卖出价格是在收益区间内的最后一个值
         //收益区间：prices[i]>minPrice+fee
         //minPrice的变化，在收益区间内随着前一个变化而变化
-        int minPrice=prices[0];
-        int result=0;
-        for(int i=1;i<prices.length;i++){
-            if(prices[i]<minPrice)minPrice=prices[i];
-            if(prices[i]>minPrice+fee){     //如果没到收益区间内的最后一个值，相当于一种“虚卖出”
-                result+=prices[i]-minPrice-fee;
-                minPrice=prices[i]-fee;  //很重要！！保证了不会多减一次fee
+        int minPrice = prices[0];
+        int result = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < minPrice) minPrice = prices[i];
+            if (prices[i] > minPrice + fee) {     //如果没到收益区间内的最后一个值，相当于一种“虚卖出”
+                result += prices[i] - minPrice - fee;
+                minPrice = prices[i] - fee;  //很重要！！保证了不会多减一次fee
             }
         }
         return result;

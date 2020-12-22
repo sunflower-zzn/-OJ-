@@ -29,40 +29,42 @@ public class Solution201222 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> res=new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         //做中序遍历，并且根据深度不同记录节点
-        treeitor(root,res,0);
+        treeitor(root, res, 0);
         //锯齿部分逆序即可
-        for(int i=0;i<res.size();i++){
-            if(i%2==1){
-                List<Integer> templist=res.get(i);
-                for(int j=0;j<templist.size()/2;j++){
-                    int temp=templist.get(j);
-                    templist.set(j,templist.get(templist.size()-1-j));
-                    templist.set(templist.size()-1-j,temp);
+        for (int i = 0; i < res.size(); i++) {
+            if (i % 2 == 1) {
+                List<Integer> templist = res.get(i);
+                for (int j = 0; j < templist.size() / 2; j++) {
+                    int temp = templist.get(j);
+                    templist.set(j, templist.get(templist.size() - 1 - j));
+                    templist.set(templist.size() - 1 - j, temp);
                 }
-                res.set(i,templist);
+                res.set(i, templist);
             }
         }
         return res;
     }
 
-    public void treeitor(TreeNode root,List<List<Integer>> list,int deep){
-        if(root!=null){
-            if(list.size()<deep+1){
-                List<Integer> templist=new ArrayList<>();
+    public void treeitor(TreeNode root, List<List<Integer>> list, int deep) {
+        if (root != null) {
+            if (list.size() < deep + 1) {
+                List<Integer> templist = new ArrayList<>();
                 templist.add(root.val);
                 list.add(templist);
-            }
-            else{
+            } else {
                 list.get(deep).add(root.val);
             }
-            treeitor(root.left,list,deep+1);
-            treeitor(root.right,list,deep+1);
+            treeitor(root.left, list, deep + 1);
+            treeitor(root.right, list, deep + 1);
         }
     }
 }

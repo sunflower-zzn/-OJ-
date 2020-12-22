@@ -28,25 +28,25 @@ import java.util.List;
 public class Solution201115 {
     public String removeKdigits(String num, int k) {
         //遍历数组，如果比前一位大就可以删除，如果全是升序就删掉最后一位，做k次
-        if(num.length()==k)return "0";
-        StringBuffer ans=new StringBuffer(num);
-        while(k>0){
-            int index=0;
-            for(int i=1;i<ans.length();i++){
-                if(ans.charAt(i)<ans.charAt(i-1))break;
-                else index=i;
+        if (num.length() == k) return "0";
+        StringBuffer ans = new StringBuffer(num);
+        while (k > 0) {
+            int index = 0;
+            for (int i = 1; i < ans.length(); i++) {
+                if (ans.charAt(i) < ans.charAt(i - 1)) break;
+                else index = i;
             }
             ans.deleteCharAt(index);
             k--;
         }
-        while(ans.length()>1&&ans.charAt(0)=='0')ans.deleteCharAt(0);
+        while (ans.length() > 1 && ans.charAt(0) == '0') ans.deleteCharAt(0);
         return ans.toString();
     }
 
     public static void main(String[] args) {
-        Solution201115 s=new Solution201115();
-        String num="1432219";
-        int k=3;
-        s.removeKdigits(num,k);
+        Solution201115 s = new Solution201115();
+        String num = "1432219";
+        int k = 3;
+        s.removeKdigits(num, k);
     }
 }

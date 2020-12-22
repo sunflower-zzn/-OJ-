@@ -22,30 +22,32 @@ public class Solution201120 {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 
     public ListNode insertionSortList(ListNode head) {
-        if(head==null)return null;
-        ListNode previous=head;
-        while(previous.next!=null){
-            if(head.val>=previous.next.val){
-                ListNode temp=previous.next;
-                previous.next=temp.next;
-                temp.next=head;
-                head=temp;
-            }
-            else{
-                ListNode p=head;
-                while(p!=previous&&p.next.val<previous.next.val){
-                    p=p.next;
+        if (head == null) return null;
+        ListNode previous = head;
+        while (previous.next != null) {
+            if (head.val >= previous.next.val) {
+                ListNode temp = previous.next;
+                previous.next = temp.next;
+                temp.next = head;
+                head = temp;
+            } else {
+                ListNode p = head;
+                while (p != previous && p.next.val < previous.next.val) {
+                    p = p.next;
                 }
-                if(p==previous)previous=previous.next;
-                else{
-                    ListNode temp=previous.next;
-                    previous.next=temp.next;
-                    temp.next=p.next;
-                    p.next=temp;
+                if (p == previous) previous = previous.next;
+                else {
+                    ListNode temp = previous.next;
+                    previous.next = temp.next;
+                    temp.next = p.next;
+                    p.next = temp;
                 }
             }
         }

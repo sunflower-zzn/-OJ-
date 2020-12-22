@@ -34,8 +34,14 @@ public class Solution201027 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
         TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
@@ -43,7 +49,7 @@ public class Solution201027 {
         }
     }
 
-    List<Integer> preorderlist=new ArrayList<Integer>();
+    List<Integer> preorderlist = new ArrayList<Integer>();
 
     public List<Integer> preorderTraversal(TreeNode root) {
         /*
@@ -60,16 +66,16 @@ public class Solution201027 {
         */
 
         //迭代方法，用stack维护上一层的根节点，遍历完成后返回
-        if(root==null)return new ArrayList<Integer>();
-        Stack<TreeNode> stack=new Stack<TreeNode>();
-        while(!stack.isEmpty() || root!=null){
-            while(root!=null){
+        if (root == null) return new ArrayList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
                 preorderlist.add(root.val);
                 stack.push(root);
-                root=root.left;
+                root = root.left;
             }
-            root=stack.pop();
-            root=root.right;
+            root = stack.pop();
+            root = root.right;
         }
 
         return preorderlist;

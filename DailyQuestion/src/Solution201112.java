@@ -21,42 +21,42 @@ import java.util.List;
 
 public class Solution201112 {
     public int[] sortArrayByParityII(int[] A) {
-        /*
+/*
         //两次遍历，效果很差！
-        List<Integer> odd=new ArrayList<Integer>();
-        List<Integer> even=new ArrayList<Integer>();
-        for(int i=0;i<A.length;i++){
-            if(A[i]%2==0)even.add(A[i]);
+        List<Integer> odd = new ArrayList<Integer>();
+        List<Integer> even = new ArrayList<Integer>();
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] % 2 == 0) even.add(A[i]);
             else odd.add(A[i]);
         }
-        int oindex=0;
-        int eindex=0;
-        for(int i=0;i<A.length;i++){
-            if(i%2==0)A[i]=even.get(eindex++);
-            else A[i]=odd.get(oindex++);
+        int oindex = 0;
+        int eindex = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (i % 2 == 0) A[i] = even.get(eindex++);
+            else A[i] = odd.get(oindex++);
         }
         return A;
-        */
+*/
 
         //双指针法
-        int odd=1,even=0;
-        while(even<A.length){
-            if(A[even]%2!=0){
-                while(A[odd]%2!=0){
-                    odd+=2;
+        int odd = 1, even = 0;
+        while (even < A.length) {
+            if (A[even] % 2 != 0) {
+                while (A[odd] % 2 != 0) {
+                    odd += 2;
                 }
-                int temp=A[even];
-                A[even]=A[odd];
-                A[odd]=temp;
+                int temp = A[even];
+                A[even] = A[odd];
+                A[odd] = temp;
             }
-            even+=2;
+            even += 2;
         }
         return A;
     }
 
     public static void main(String[] args) {
-        Solution201112 s=new Solution201112();
-        int[] A={2,4,7,5};
+        Solution201112 s = new Solution201112();
+        int[] A = {2, 4, 7, 5};
         s.sortArrayByParityII(A);
     }
 }

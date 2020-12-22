@@ -34,31 +34,31 @@ import java.util.List;
 public class Solution201202 {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         //采取分治算法，先从两个数组中取x1，x2长度的数组，然后把两个数组拼起来最大即可
-        int resultSum=0;
-        List<Integer> result= new ArrayList<>();
-        List<Integer> list1,list2;
+        int resultSum = 0;
+        List<Integer> result = new ArrayList<>();
+        List<Integer> list1, list2;
         //遍历去除长度和为k的两段数组
-        for(int i=0;i<=k;i++){
-            if(nums1.length>=i){
-                list1=findMaxSubArrays(nums1,i);
-                list2=findMaxSubArrays(nums2,k-i);
+        for (int i = 0; i <= k; i++) {
+            if (nums1.length >= i) {
+                list1 = findMaxSubArrays(nums1, i);
+                list2 = findMaxSubArrays(nums2, k - i);
             }
         }
         return null;
     }
 
-    public List<Integer> findMaxSubArrays(int[] nums,int length){
+    public List<Integer> findMaxSubArrays(int[] nums, int length) {
         //从数组中取出最大的length个数字，并保持顺序
-        if(length==0)return new ArrayList<>();
+        if (length == 0) return new ArrayList<>();
         //转化成题402：去掉k位数字,使剩下的数字组成最大
-        List<Integer> numlist=new ArrayList<>();
-        for(int num:nums)numlist.add(num);
-        int k=nums.length-length;
-        while(k>0){
-            int index=0;
-            for(int i=0;i<numlist.size()-1;i++){
-                if(numlist.get(i)<numlist.get(i))break;
-                index=i;
+        List<Integer> numlist = new ArrayList<>();
+        for (int num : nums) numlist.add(num);
+        int k = nums.length - length;
+        while (k > 0) {
+            int index = 0;
+            for (int i = 0; i < numlist.size() - 1; i++) {
+                if (numlist.get(i) < numlist.get(i)) break;
+                index = i;
             }
             numlist.remove(index);
             k--;
@@ -66,17 +66,17 @@ public class Solution201202 {
         return numlist;
     }
 
-    public int listSum(List<Integer> nums){
+    public int listSum(List<Integer> nums) {
         //返回List构成的数字大小
-        int res=0;
-        for(int num:nums){
-            res+=num;
-            res*=10;
+        int res = 0;
+        for (int num : nums) {
+            res += num;
+            res *= 10;
         }
-        return res/10;
+        return res / 10;
     }
 
-    public List<Integer> joinList( List<Integer> list1, List<Integer> list2){
+    public List<Integer> joinList(List<Integer> list1, List<Integer> list2) {
         //拼接两个list，保证组合成的数字和最大，且保持相对顺序
         return null;
     }

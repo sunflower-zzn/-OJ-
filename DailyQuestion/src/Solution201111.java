@@ -38,29 +38,29 @@ public class Solution201111 {
             对于钟表，1点到2点 的步数 可以是 |1-2| = 1，也可以是 12(总刻度数) - 1 = 11, 最小步数是 1，依次类推。
         */
         // 维护一个list数组，list记录ring中每种字符出现的位置，并根据字符大小（a-z）记录到list数组中
-        List<Integer>[] pos=new List[26];
-        for(int i=0;i<26;i++){
-            pos[i]=new ArrayList<Integer>();
+        List<Integer>[] pos = new List[26];
+        for (int i = 0; i < 26; i++) {
+            pos[i] = new ArrayList<Integer>();
         }
-        int n=ring.length(),m=key.length();
-        for(int i=0;i<n;i++){
-            pos[ring.charAt(i)-'a'].add(i);
+        int n = ring.length(), m = key.length();
+        for (int i = 0; i < n; i++) {
+            pos[ring.charAt(i) - 'a'].add(i);
         }
-        int[][] dp=new int[m][n];
-        for(int i=0;i<m;i++){
-            Arrays.fill(dp[i],0x3f3f3f);
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(dp[i], 0x3f3f3f);
         }
         for (int i : pos[key.charAt(0) - 'a']) {
             dp[0][i] = Math.min(i, n - i) + 1;
         }
-        for(int i=1;i<m;i++){
-            for(int j:pos[key.charAt(i)-'a']){
-                for(int k:pos[key.charAt(i-1)-'a']){
-                    dp[i][j]=Math.min(dp[i][j],dp[i-1][k]+Math.min(Math.abs(j-k),n-Math.abs(j-k))+1);
+        for (int i = 1; i < m; i++) {
+            for (int j : pos[key.charAt(i) - 'a']) {
+                for (int k : pos[key.charAt(i - 1) - 'a']) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + Math.min(Math.abs(j - k), n - Math.abs(j - k)) + 1);
                 }
             }
         }
-        return Arrays.stream(dp[m-1]).min().getAsInt();
+        return Arrays.stream(dp[m - 1]).min().getAsInt();
     }
 
 }

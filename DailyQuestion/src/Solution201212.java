@@ -29,15 +29,14 @@ public class Solution201212 {
         //需要关注的是：每个上升/下降序列都是从前一个下降/上升序列得来的
         //如果在类似[1,2,3,4]这样的坡上的话，因为down不变，所以每次up=down+1不变
         //坡度被忽略掉了，我们只关心峰和谷！
-        int up=1,down=1;
-        for(int i=1;i<nums.length;i++){
-            if(nums[i]>nums[i-1]){
-                up=down+1;
-            }
-            else if(nums[i]<nums[i-1]){
-                down=up+1;
+        int up = 1, down = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                up = down + 1;
+            } else if (nums[i] < nums[i - 1]) {
+                down = up + 1;
             }
         }
-        return nums.length==0?0:Math.max(up,down);
+        return nums.length == 0 ? 0 : Math.max(up, down);
     }
 }

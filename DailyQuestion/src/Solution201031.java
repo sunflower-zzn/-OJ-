@@ -33,44 +33,49 @@
 import java.util.*;
 
 public class Solution201031 {
-    List<Integer> nums=new ArrayList<Integer>();
-    Map<Integer,Set<Integer>> map=new HashMap<>();
-    static Random rand=new Random();
+    List<Integer> nums = new ArrayList<Integer>();
+    Map<Integer, Set<Integer>> map = new HashMap<>();
+    static Random rand = new Random();
 
-    /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
+    /**
+     * Inserts a value to the collection. Returns true if the collection did not already contain the specified element.
+     */
     public boolean insert(int val) {
         nums.add(val);
-        Set<Integer> set=map.getOrDefault(val, new HashSet<>());
-        set.add(nums.size()-1); //set中记录下每一个val出现的下标
-        map.put(val,set);
-        return set.size()==1;
+        Set<Integer> set = map.getOrDefault(val, new HashSet<>());
+        set.add(nums.size() - 1); //set中记录下每一个val出现的下标
+        map.put(val, set);
+        return set.size() == 1;
     }
 
-    /** Removes a value from the collection. Returns true if the collection contained the specified element. */
+    /**
+     * Removes a value from the collection. Returns true if the collection contained the specified element.
+     */
     public boolean remove(int val) {
-        if(!map.containsKey(val))return false; //val不存在
-        Iterator<Integer> iterator=map.get(val).iterator();
-        int idx=iterator.next(); //获得HashSet中的一个下标
-        if(idx==nums.size()-1){
+        if (!map.containsKey(val)) return false; //val不存在
+        Iterator<Integer> iterator = map.get(val).iterator();
+        int idx = iterator.next(); //获得HashSet中的一个下标
+        if (idx == nums.size() - 1) {
             //如果idx就是最后一个，将map中val的最后一个下标删除以及删去nums的最后一个即可
             map.get(val).remove(idx);
-        }
-        else{
+        } else {
             //否则，为了O1，需要将nums最后一个移动到idx位置，填补位置，并修改两个数在map中的对应值
-            int lastNum=nums.get(nums.size()-1);
-            nums.set(idx,lastNum);
+            int lastNum = nums.get(nums.size() - 1);
+            nums.set(idx, lastNum);
             map.get(val).remove(idx);
             //删去lastNum的最后一个下标并加上idx下标
-            map.get(lastNum).remove(nums.size()-1);
+            map.get(lastNum).remove(nums.size() - 1);
             map.get(lastNum).add(idx);
         }
-        if(map.get(val).size()==0)map.remove(val); //如果删去一个后val清空了，remove对应的键值对
-        nums.remove(nums.size()-1);
+        if (map.get(val).size() == 0) map.remove(val); //如果删去一个后val清空了，remove对应的键值对
+        nums.remove(nums.size() - 1);
         return true;
     }
 
-    /** Get a random element from the collection. */
+    /**
+     * Get a random element from the collection.
+     */
     public int getRandom() {
-        return nums.get((int)(Math.random()*nums.size())); //Math.random()返回0~1的一个伪随机数
+        return nums.get((int) (Math.random() * nums.size())); //Math.random()返回0~1的一个伪随机数
     }
 }

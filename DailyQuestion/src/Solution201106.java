@@ -38,24 +38,24 @@ import java.util.List;
 
 public class Solution201106 {
     public int[] sortByBits(int[] arr) {
-        /*
+/*
         //排序函数方法，定义排序函数，利用JAVA中的bitcount函数计算1的个数
-        if(arr.length==0)return arr;
-        List<Integer> list=new ArrayList<Integer>();
-        for(int num:arr){
+        if (arr.length == 0) return arr;
+        List<Integer> list = new ArrayList<Integer>();
+        for (int num : arr) {
             list.add(num);
         }
-        list.sort((num1,num2)->{
-            int b1=Integer.bitCount(num1);
-            int b2=Integer.bitCount(num2);
-            return b1!=b2?b1-b2:num1-num2; // 三目操作符
+        list.sort((num1, num2) -> {
+            int b1 = Integer.bitCount(num1);
+            int b2 = Integer.bitCount(num2);
+            return b1 != b2 ? b1 - b2 : num1 - num2; // 三目操作符
         });
-        int[] res=new int[arr.length];
-        for(int i=0;i<arr.length;i++){
-            res[i]=list.get(i);
+        int[] res = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            res[i] = list.get(i);
         }
         return res;
-        */
+*/
 
         //注意到0 <= arr[i] <= 10^4，计算其1的个数并让其二进制标识做高位（只需要超出10^4即可）
         //然后其本身做低位进行数组排序即可，这样先比较1的个数，在比较数的大小

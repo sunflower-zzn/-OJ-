@@ -20,20 +20,22 @@ import java.util.Set;
 
 public class Solution201102 {
     public int[] intersection(int[] nums1, int[] nums2) {
-        Set<Integer> set=new HashSet<Integer>();
-        int[] temp=new int[Math.max(nums1.length,nums2.length)];
-        int index=0;
-        for(int i=0;i<nums1.length;i++){
+        Set<Integer> set = new HashSet<Integer>();
+        int[] temp = new int[Math.max(nums1.length, nums2.length)];
+        int index = 0;
+        for (int i = 0; i < nums1.length; i++) {
             set.add(nums1[i]);
         }
-        for(int i=0;i<nums2.length;i++){
-            if(set.contains(nums2[i])){
-                temp[index++]=nums2[i];
+        for (int i = 0; i < nums2.length; i++) {
+            if (set.contains(nums2[i])) {
+                temp[index++] = nums2[i];
                 set.remove(nums2[i]);
             }
         }
-        int[] res=new int[index];
-        for(int i=0;i<index;i++){res[i]=temp[i];}
+        int[] res = new int[index];
+        for (int i = 0; i < index; i++) {
+            res[i] = temp[i];
+        }
         return res;
     }
 }

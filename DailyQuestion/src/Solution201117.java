@@ -32,20 +32,20 @@ import java.util.*;
 
 public class Solution201117 {
     public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
-        Map<Integer,Integer> map=new HashMap<Integer,Integer>();
-        int[] p0={r0,c0};
-        for(int i=0;i<R;i++){
-            for(int j=0;j<C;j++){
-                map.put(i*C+j,Math.abs(r0-i)+Math.abs(c0-j));
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int[] p0 = {r0, c0};
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                map.put(i * C + j, Math.abs(r0 - i) + Math.abs(c0 - j));
             }
         }
-        List<Map.Entry<Integer,Integer>> list=new ArrayList<Map.Entry<Integer, Integer>>(map.entrySet());
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<Map.Entry<Integer, Integer>>(map.entrySet());
         list.sort(Comparator.comparing(Map.Entry::getValue));
-        int[][] res=new int[R*C][2];
-        int index=0;
-        for(Map.Entry<Integer,Integer> temp:list){
-            res[index][0]=temp.getKey()/C;
-            res[index][1]=temp.getKey()%C;
+        int[][] res = new int[R * C][2];
+        int index = 0;
+        for (Map.Entry<Integer, Integer> temp : list) {
+            res[index][0] = temp.getKey() / C;
+            res[index][1] = temp.getKey() % C;
             index++;
         }
         return res;

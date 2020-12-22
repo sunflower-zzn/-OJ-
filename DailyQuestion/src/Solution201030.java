@@ -24,29 +24,29 @@
 
 public class Solution201030 {
     public int islandPerimeter(int[][] grid) {
-        /*
+/*
         // 找规律方法，只需要遍历每个格子左边和上边是否有陆地即可，有一个就消去两个边
-        int result=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[i].length;j++){
-                int temp=0;
-                if(grid[i][j]==1){
-                    temp=4;
-                    if(i>0){
-                        if(grid[i-1][j]==1)temp-=2;
+        int result = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                int temp = 0;
+                if (grid[i][j] == 1) {
+                    temp = 4;
+                    if (i > 0) {
+                        if (grid[i - 1][j] == 1) temp -= 2;
                     }
-                    if(j>0){
-                        if(grid[i][j-1]==1)temp-=2;
+                    if (j > 0) {
+                        if (grid[i][j - 1] == 1) temp -= 2;
                     }
-                    result+=temp;
+                    result += temp;
                 }
             }
         }
         return result;
-        */
+*/
 
         //DFS深度优先搜索方法
-        for(int i=0;i<grid.length;i++) {
+        for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 1) {
                     return dfs(grid, i, j);
@@ -56,23 +56,23 @@ public class Solution201030 {
         return 0;
     }
 
-    public int dfs(int[][] grid,int x,int y){
-        if(x<0||y<0||x>=grid.length||y>=grid[0].length||grid[x][y]==0){
+    public int dfs(int[][] grid, int x, int y) {
+        if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length || grid[x][y] == 0) {
             return 1; // 如果是边界或者海洋，则当前边的贡献是1
         }
-        if(grid[x][y]==2){
+        if (grid[x][y] == 2) {
             return 0; // 如果已经遍历过当前边，则贡献为0
         }
-        grid[x][y]=2;
-        return dfs(grid,x-1,y)
-                +dfs(grid,x+1,y)
-                +dfs(grid,x,y-1)
-                +dfs(grid,x,y+1);
+        grid[x][y] = 2;
+        return dfs(grid, x - 1, y)
+                + dfs(grid, x + 1, y)
+                + dfs(grid, x, y - 1)
+                + dfs(grid, x, y + 1);
     }
 
     public static void main(String[] args) {
-        int [][]nums={{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
-        Solution201030 s =new Solution201030();
+        int[][] nums = {{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}};
+        Solution201030 s = new Solution201030();
         s.islandPerimeter(nums);
     }
 }

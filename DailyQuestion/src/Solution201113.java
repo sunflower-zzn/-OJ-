@@ -20,23 +20,32 @@ public class Solution201113 {
     public static class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 
     public ListNode oddEvenList(ListNode head) {
-        if(head==null || head.next==null)return head;
-        ListNode odd=head;              //当前已排序奇数序列的尾节点
-        ListNode even=head.next;        //当前已排序偶数序列的尾节点
-        while(even!=null && even.next!=null){   //length为奇数时，even==null，length为偶数时，even.next==null
-            ListNode nextodd=even.next;
-            ListNode nexteven=even.next.next;
-            nextodd.next=odd.next;
-            odd.next=nextodd;
-            odd=nextodd;
-            even.next=nexteven;
-            even=nexteven;
+        if (head == null || head.next == null) return head;
+        ListNode odd = head;              //当前已排序奇数序列的尾节点
+        ListNode even = head.next;        //当前已排序偶数序列的尾节点
+        while (even != null && even.next != null) {   //length为奇数时，even==null，length为偶数时，even.next==null
+            ListNode nextodd = even.next;
+            ListNode nexteven = even.next.next;
+            nextodd.next = odd.next;
+            odd.next = nextodd;
+            odd = nextodd;
+            even.next = nexteven;
+            even = nexteven;
         }
         return head;
     }

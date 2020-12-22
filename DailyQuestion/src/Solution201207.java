@@ -21,34 +21,34 @@
 
 public class Solution201207 {
     public int matrixScore(int[][] A) {
-        int row=A.length;
-        int column=A[0].length;
+        int row = A.length;
+        int column = A[0].length;
         //首先将第一列全置为1
-        for(int i=0;i<row;i++){
-            if(A[i][0]!=1){
-                for(int j=0;j<column;j++){
-                    A[i][j]=A[i][j]==0?1:0;
+        for (int i = 0; i < row; i++) {
+            if (A[i][0] != 1) {
+                for (int j = 0; j < column; j++) {
+                    A[i][j] = A[i][j] == 0 ? 1 : 0;
                 }
             }
         }
         //然后使之后的每一列0的个数小于1的个数
-        for(int j=1;j<column;j++){
-            int zeronum=0;
-            for(int i=0;i<row;i++){
-                if(A[i][j]==0)zeronum++;
+        for (int j = 1; j < column; j++) {
+            int zeronum = 0;
+            for (int i = 0; i < row; i++) {
+                if (A[i][j] == 0) zeronum++;
             }
-            if(zeronum>row/2){
-                for(int i=0;i<row;i++){
-                    A[i][j]=A[i][j]==0?1:0;
+            if (zeronum > row / 2) {
+                for (int i = 0; i < row; i++) {
+                    A[i][j] = A[i][j] == 0 ? 1 : 0;
                 }
             }
         }
         //计算和
-        int res= (int) (row*(Math.pow(2,column)-1));
-        for(int i=0;i<row;i++){
-            for(int j=0;j<column;j++){
-                if(A[i][j]==0){
-                    res-= (int) (Math.pow(2,column-1-j));
+        int res = (int) (row * (Math.pow(2, column) - 1));
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (A[i][j] == 0) {
+                    res -= (int) (Math.pow(2, column - 1 - j));
                 }
             }
         }

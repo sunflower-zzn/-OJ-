@@ -35,47 +35,45 @@ import java.util.List;
 
 public class Solution201104 {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        List<Integer> left=new ArrayList<Integer>();
-        List<Integer> right=new ArrayList<Integer>();
-        int leftnum=newInterval[0];
-        int rightnum=newInterval[1];
-        if(intervals.length==0 ){  //如果原数组为null，直接插入newInterval即可
+        List<Integer> left = new ArrayList<Integer>();
+        List<Integer> right = new ArrayList<Integer>();
+        int leftnum = newInterval[0];
+        int rightnum = newInterval[1];
+        if (intervals.length == 0) {  //如果原数组为null，直接插入newInterval即可
             left.add(leftnum);
             right.add(rightnum);
-        }
-        else{
-            int index=0;
+        } else {
+            int index = 0;
             //找到所有在newInterval左边的区间，直接插入list
-            while(index<intervals.length&&intervals[index][1]<leftnum){
+            while (index < intervals.length && intervals[index][1] < leftnum) {
                 left.add(intervals[index][0]);
                 right.add(intervals[index][1]);
                 index++;
             }
             //遇到newInterval，分情况处理
-            if(index==intervals.length || intervals[index][0]>rightnum){  //newInterval在最右边，或，如果newInterval与其右边的区间没有重叠，直接插入
+            if (index == intervals.length || intervals[index][0] > rightnum) {  //newInterval在最右边，或，如果newInterval与其右边的区间没有重叠，直接插入
                 left.add(leftnum);
                 right.add(rightnum);
-            }
-            else{  //有重叠部分
-                leftnum=Math.min(intervals[index][0],leftnum);
-                while(index<intervals.length && intervals[index][0]<=rightnum){  //找到没有重叠的后面第一个区间
+            } else {  //有重叠部分
+                leftnum = Math.min(intervals[index][0], leftnum);
+                while (index < intervals.length && intervals[index][0] <= rightnum) {  //找到没有重叠的后面第一个区间
                     index++;
                 }
-                rightnum=Math.max(intervals[index-1][1],rightnum);
+                rightnum = Math.max(intervals[index - 1][1], rightnum);
                 left.add(leftnum);
                 right.add(rightnum);
             }
             //将剩余的右边区间插入
-            while(index<intervals.length&&intervals[index][0]>rightnum){
+            while (index < intervals.length && intervals[index][0] > rightnum) {
                 left.add(intervals[index][0]);
                 right.add(intervals[index][1]);
                 index++;
             }
         }
-        int[][] res=new int[left.size()][2];
-        for(int i=0;i<left.size();i++){
-            res[i][0]=left.get(i);
-            res[i][1]=right.get(i);
+        int[][] res = new int[left.size()][2];
+        for (int i = 0; i < left.size(); i++) {
+            res[i][0] = left.get(i);
+            res[i][1] = right.get(i);
         }
         return res;
     }

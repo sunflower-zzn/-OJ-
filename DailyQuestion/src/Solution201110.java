@@ -17,44 +17,43 @@ public class Solution201110 {
         //如何找到字典序的下一个：有右往左查找找到第一个升序结构的nums[i-1]<nums[i]
         //然后查找nums[i-1]右边降序结构中，比nums[i-1]大的最小值nums[k]，交换
         //然后将nums[i-1]后的数字升序排列即可！
-        if(nums.length<2)return;
-        int index=-1;
-        for(int i=nums.length-1;i>0;i--){
-            if(nums[i-1]<nums[i]){
-                index=i-1;
+        if (nums.length < 2) return;
+        int index = -1;
+        for (int i = nums.length - 1; i > 0; i--) {
+            if (nums[i - 1] < nums[i]) {
+                index = i - 1;
                 break;
             }
         }
-        if(index==-1){  //全为降序，将整个数组逆序即可
-            for(int i=0;i<nums.length/2;i++){
-                int temp=nums[i];
-                nums[i]=nums[nums.length-1-i];
-                nums[nums.length-1-i]=temp;
+        if (index == -1) {  //全为降序，将整个数组逆序即可
+            for (int i = 0; i < nums.length / 2; i++) {
+                int temp = nums[i];
+                nums[i] = nums[nums.length - 1 - i];
+                nums[nums.length - 1 - i] = temp;
             }
-        }
-        else{
+        } else {
             //找到index之后比nums[index]大的最小值nums[k]，并交换
-            int k=index+1;
-            for(int i=index+1;i<nums.length;i++){
-                if(nums[i]>nums[index]&&nums[i]<=nums[k]){
-                    k=i;
+            int k = index + 1;
+            for (int i = index + 1; i < nums.length; i++) {
+                if (nums[i] > nums[index] && nums[i] <= nums[k]) {
+                    k = i;
                 }
             }
-            int temp=nums[k];
-            nums[k]=nums[index];
-            nums[index]=temp;
+            int temp = nums[k];
+            nums[k] = nums[index];
+            nums[index] = temp;
             //将index后的数据逆序为升序
-            for(int i=index+1;i<(nums.length-(index+1))/2+(index+1);i++){
-                temp=nums[i];
-                nums[i]=nums[(nums.length-1)-(i-index-1)];
-                nums[(nums.length-1)-(i-index-1)]=temp;
+            for (int i = index + 1; i < (nums.length - (index + 1)) / 2 + (index + 1); i++) {
+                temp = nums[i];
+                nums[i] = nums[(nums.length - 1) - (i - index - 1)];
+                nums[(nums.length - 1) - (i - index - 1)] = temp;
             }
         }
     }
 
     public static void main(String[] args) {
-        Solution201110 s=new Solution201110();
-        int[] nums={1,3,2};
+        Solution201110 s = new Solution201110();
+        int[] nums = {1, 3, 2};
         s.nextPermutation(nums);
     }
 

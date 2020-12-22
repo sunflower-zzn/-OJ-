@@ -30,40 +30,37 @@
 
 public class Solution201209 {
     public int uniquePaths(int m, int n) {
-        /*
+/*
         //排列组合A(m-1+n-1,m-1+n-1)/A(m-1,m-1)/A(n-1*n-1)
         //即(m+n-2)!/((m-1)!*(n-1)!)
-        int big,small;
-        if(m>=n){
-            big=m-1;
-            small=n-1;
+        int big, small;
+        if (m >= n) {
+            big = m - 1;
+            small = n - 1;
+        } else {
+            big = n - 1;
+            small = m - 1;
         }
-        else{
-            big=n-1;
-            small=m-1;
+        long result = 1;
+        for (int i = m + n - 2; i > big; i--) {
+            result *= i;
         }
-        long result=1;
-        for(int i=m+n-2;i>big;i--){
-            result*=i;
+        for (int i = 1; i <= small; i++) {
+            result /= i;
         }
-        for(int i=1;i<=small;i++){
-            result/=i;
-        }
-        return (int)result;
-        */
+        return (int) result;
 
-        /*
         //朴素动态规划A[i,j]=A[i-1,j]+A[i,j-1];i>0,j>0
-        int[][] A=new int[m][n];
-        for(int i=0;i<m;i++)A[i][0]=1;
-        for(int j=0;j<n;j++)A[0][j]=1;
-        for(int i=1;i<m;i++){
-            for(int j=1;j<n;j++){
-                A[i][j]=A[i-1][j]+A[i][j-1];
+        int[][] A = new int[m][n];
+        for (int i = 0; i < m; i++) A[i][0] = 1;
+        for (int j = 0; j < n; j++) A[0][j] = 1;
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                A[i][j] = A[i - 1][j] + A[i][j - 1];
             }
         }
-        return A[m-1][n-1];
-        */
+        return A[m - 1][n - 1];
+*/
 
         //优化至1维dp，只需要维护一行，A[j]=A[j]+A[j-1]；旧的A[j]就是上一行的A[i-1,j]
         int[] A=new int[n];

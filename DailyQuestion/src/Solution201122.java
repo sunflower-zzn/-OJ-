@@ -23,22 +23,22 @@ import java.util.Set;
 
 public class Solution201122 {
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length())return false;
-        /*//做法一：字符串排序后比较
-        char[] str_s=s.toCharArray();
-        char[] str_t=t.toCharArray();
+        if (s.length() != t.length()) return false;
+/*        //做法一：字符串排序后比较
+        char[] str_s = s.toCharArray();
+        char[] str_t = t.toCharArray();
         Arrays.sort(str_s);
         Arrays.sort(str_t);
-        return Arrays.equals(str_s,str_t);*/
+        return Arrays.equals(str_s, str_t);*/
 
         //做法二：字符串记录每种字符出现次数并比较
-        int[] table=new int[26];
-        for(char c:s.toCharArray()){
-            table[c-'a']++;
+        int[] table = new int[26];
+        for (char c : s.toCharArray()) {
+            table[c - 'a']++;
         }
-        for(char c:t.toCharArray()){
-            table[c-'a']--;
-            if(table[c-'a']<0)return false;
+        for (char c : t.toCharArray()) {
+            table[c - 'a']--;
+            if (table[c - 'a'] < 0) return false;
         }
         return true;
     }

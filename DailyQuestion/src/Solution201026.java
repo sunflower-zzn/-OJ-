@@ -28,46 +28,45 @@
 
 public class Solution201026 {
     public int[] smallerNumbersThanCurrent(int[] nums) {
-        /*
-        //暴力解法，O(n^2)
-        int res[]=new int[nums.length];
-        for(int i=0;i<nums.length;i++){
-            res[i]=0;
+
+/*        //暴力解法，O(n^2)
+        int res[] = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = 0;
         }
-        for(int i=0;i<nums.length;i++){
-            for(int j=0;j<nums.length;j++){
-                if(nums[i]>nums[j]&&i!=j){
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[i] > nums[j] && i != j) {
                     res[i]++;
                 }
             }
         }
-        return res;
-        */
+        return res;*/
 
         //找到最大值，然后统计0-max出现的每个数的个数
-        int maxnum=0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>maxnum)maxnum=nums[i];
+        int maxnum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > maxnum) maxnum = nums[i];
         }
-        int ans[]=new int[maxnum+1];
-        for(int i=0;i<nums.length;i++){
+        int ans[] = new int[maxnum + 1];
+        for (int i = 0; i < nums.length; i++) {
             ans[nums[i]]++;
         }
-        for(int i=1;i<maxnum+1;i++){
-            ans[i]+=ans[i-1];
+        for (int i = 1; i < maxnum + 1; i++) {
+            ans[i] += ans[i - 1];
         }
-        int res[]=new int[nums.length];
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==0)res[i]=0;
-            else res[i]=ans[nums[i]-1];
+        int res[] = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) res[i] = 0;
+            else res[i] = ans[nums[i] - 1];
         }
         return res;
 
     }
 
     public static void main(String[] args) {
-        int nums[]={8,1,2,2,5};
-        Solution201026 s=new Solution201026();
+        int nums[] = {8, 1, 2, 2, 5};
+        Solution201026 s = new Solution201026();
         s.smallerNumbersThanCurrent(nums);
     }
 }

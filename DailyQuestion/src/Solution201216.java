@@ -25,25 +25,23 @@ import java.util.Map;
 
 public class Solution201216 {
     public boolean wordPattern(String pattern, String s) {
-        String[] ss=s.split(" ");
-        char[] chs=pattern.toCharArray();
-        if(ss.length!=chs.length)return false;
-        Map<String,Character> map1=new HashMap<>();
-        for(int i=0;i<chs.length;i++){
-            if(!map1.containsKey(ss[i])){
-                map1.put(ss[i],chs[i]);
-            }
-            else{
-                if(map1.get(ss[i])!=chs[i])return false;
+        String[] ss = s.split(" ");
+        char[] chs = pattern.toCharArray();
+        if (ss.length != chs.length) return false;
+        Map<String, Character> map1 = new HashMap<>();
+        for (int i = 0; i < chs.length; i++) {
+            if (!map1.containsKey(ss[i])) {
+                map1.put(ss[i], chs[i]);
+            } else {
+                if (map1.get(ss[i]) != chs[i]) return false;
             }
         }
-        Map<Character,String> map2=new HashMap<>();
-        for(int i=0;i<chs.length;i++){
-            if(!map2.containsKey(chs[i])){
-                map2.put(chs[i],ss[i]);
-            }
-            else{
-                if(!map2.get(chs[i]).equals(ss[i]))return false;
+        Map<Character, String> map2 = new HashMap<>();
+        for (int i = 0; i < chs.length; i++) {
+            if (!map2.containsKey(chs[i])) {
+                map2.put(chs[i], ss[i]);
+            } else {
+                if (!map2.get(chs[i]).equals(ss[i])) return false;
             }
         }
         return true;

@@ -17,18 +17,18 @@
 
 public class Solution201107 {
     public int countRangeSum(int[] nums, int lower, int upper) {
-        /*
+/*
         //最直观的算法：o^2
-        int res=0;
-        for(int i=0;i<nums.length;i++){
-            long sum=0;
-            for(int j=i;j<nums.length;j++){
-                sum+=nums[j];
-                if(sum>=lower&&sum<=upper)res++;
+        int res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            long sum = 0;
+            for (int j = i; j < nums.length; j++) {
+                sum += nums[j];
+                if (sum >= lower && sum <= upper) res++;
             }
         }
         return res;
-        */
+*/
 
         //前驱和数组+归并排序 Nlog(N)
         long[] preSum=new long[nums.length+1];  //nums[i]=preSum[i+1]-preSum[i] 所以前驱和长度多1

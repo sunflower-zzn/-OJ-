@@ -22,53 +22,50 @@ import java.util.List;
 public class Solution201215 {
     public int monotoneIncreasingDigits(int N) {
         //N 属于 [0, 10^9]，记录每一位的逆序
-        int[] temp=new int[10];
-        int len=1;
-        int num=N;
-        while(num>=10){
-            temp[len-1]=num%10;
+        int[] temp = new int[10];
+        int len = 1;
+        int num = N;
+        while (num >= 10) {
+            temp[len - 1] = num % 10;
             len++;
-            num=num/10;
+            num = num / 10;
         }
-        temp[len-1]=num;
+        temp[len - 1] = num;
         //反转temp
-        int[] digits=new int[10];
-        for(int i=0;i<len;i++){
-            digits[i]=temp[len-1-i];
+        int[] digits = new int[10];
+        for (int i = 0; i < len; i++) {
+            digits[i] = temp[len - 1 - i];
         }
         //从高位到低位找单调递增序列
-        int index=0;
-        for(int i=1;i<len;i++){
-            if(digits[i]>=digits[index]){
-                index=i;
-            }
-            else break;;
+        int index = 0;
+        for (int i = 1; i < len; i++) {
+            if (digits[i] >= digits[index]) {
+                index = i;
+            } else break;
+            ;
         }
-        if(index==len-1) return N;
+        if (index == len - 1) return N;
         //从index开始退一，直到剩下的仍满足
-        while(index>0){
-            if(digits[index]-1<digits[index-1]){
-                index=index-1;
-            }
-            else break;
+        while (index > 0) {
+            if (digits[index] - 1 < digits[index - 1]) {
+                index = index - 1;
+            } else break;
         }
-        int res=0;
-        for(int i=0;i<len;i++){
-            if(i<index){
-                res=res*10+digits[i];
-            }
-            else if(i>index){
-                res=res*10+9;
-            }
-            else{
-                res=res*10+digits[i]-1;
+        int res = 0;
+        for (int i = 0; i < len; i++) {
+            if (i < index) {
+                res = res * 10 + digits[i];
+            } else if (i > index) {
+                res = res * 10 + 9;
+            } else {
+                res = res * 10 + digits[i] - 1;
             }
         }
         return res;
     }
 
     public static void main(String[] args) {
-        Solution201215 s=new Solution201215();
+        Solution201215 s = new Solution201215();
         s.monotoneIncreasingDigits(10);
     }
 }

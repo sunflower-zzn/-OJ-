@@ -25,32 +25,31 @@
 
 public class Solution201103 {
     public boolean validMountainArray(int[] A) {
-        /*
-        if(A.length<3)return false;
-        if(A[0]>=A[1])return false;
-        boolean haspeek=false;
-        for(int i=1;i<A.length;i++){
-            if(A[i-1]>A[i])haspeek=true;
-            else if(A[i-1]==A[i])return false;   //出现相等为非山峰
-            else{
-                if(haspeek)return false;  //已经出现山峰的情况下再上扬就为非山脉了
+/*
+        if (A.length < 3) return false;
+        if (A[0] >= A[1]) return false;
+        boolean haspeek = false;
+        for (int i = 1; i < A.length; i++) {
+            if (A[i - 1] > A[i]) haspeek = true;
+            else if (A[i - 1] == A[i]) return false;   //出现相等为非山峰
+            else {
+                if (haspeek) return false;  //已经出现山峰的情况下再上扬就为非山脉了
             }
         }
         return haspeek;
-        */
+*/
 
-        if(A.length<3)return false;
-        int left=0;
-        int right=A.length-1;
-        while(left<A.length-2&&A[left]<A[left+1]){
+        if (A.length < 3) return false;
+        int left = 0;
+        int right = A.length - 1;
+        while (left < A.length - 2 && A[left] < A[left + 1]) {
             left++;
         }
-        while(right>0&&A[right-1]>A[right]){
+        while (right > 0 && A[right - 1] > A[right]) {
             right--;
         }
-        if(left==0||right==A.length-1)return false;
-        return left==right;
-
+        if (left == 0 || right == A.length - 1) return false;
+        return left == right;
 
 
     }

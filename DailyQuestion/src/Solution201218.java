@@ -31,27 +31,25 @@ public class Solution201218 {
     public char findTheDifference(String s, String t) {
         /*
         //数组排序
-        char[] ch1=s.toCharArray();
-        char[] ch2=t.toCharArray();
+        char[] ch1 = s.toCharArray();
+        char[] ch2 = t.toCharArray();
         Arrays.sort(ch1);
         Arrays.sort(ch2);
-        for(int i=0;i<ch1.length;i++){
-            if(ch1[i]!=ch2[i])return ch2[i];
+        for (int i = 0; i < ch1.length; i++) {
+            if (ch1[i] != ch2[i]) return ch2[i];
         }
-        return ch2[ch2.length-1];
-        */
+        return ch2[ch2.length - 1];
 
-        /*
         //字符计数法，找到两次相差的那个字符
-        char[] ch1=s.toCharArray();
-        char[] ch2=t.toCharArray();
-        int[] array=new int[26];
-        for(int i=0;i<s.length();i++){
-            array[ch1[i]-'a']++;
+        char[] ch1 = s.toCharArray();
+        char[] ch2 = t.toCharArray();
+        int[] array = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            array[ch1[i] - 'a']++;
         }
-        for(int i=0;i<t.length();i++){
-            array[ch2[i]-'a']--;
-            if(array[ch2[i]-'a']<0){
+        for (int i = 0; i < t.length(); i++) {
+            array[ch2[i] - 'a']--;
+            if (array[ch2[i] - 'a'] < 0) {
                 return ch2[i];
             }
         }
@@ -59,11 +57,11 @@ public class Solution201218 {
         */
 
         //ASCII码求和，相差的值就是不同字符的ASCII码
-        int ascii=0;
-        char[] ch1=s.toCharArray();
-        char[] ch2=t.toCharArray();
-        for(char ch:ch2)ascii+=ch;
-        for(char ch:ch1)ascii-=ch;
-        return (char)ascii;
+        int ascii = 0;
+        char[] ch1 = s.toCharArray();
+        char[] ch2 = t.toCharArray();
+        for (char ch : ch2) ascii += ch;
+        for (char ch : ch1) ascii -= ch;
+        return (char) ascii;
     }
 }

@@ -31,20 +31,20 @@ public class Solution201116 {
             [ [ 5, 0 ], [ 7, 0 ], [ 5, 2 ], [ 6, 1 ], [ 4, 4 ], [ 7, 1 ] ]
         */
         List<int[]> list = new ArrayList<>(Arrays.asList(people));
-        list.sort((o1, o2) -> o1[0]!=o2[0]?o1[0]-o2[0]:o2[1]-o1[1]);
-        List<Integer> ans= new ArrayList<>();
-        for(int i=0;i<people.length;i++)ans.add(i);
-        int[][] res=new int[people.length][2];
-        for(int i=0;i<people.length;i++){
-            res[ans.get(list.get(i)[1])]=list.get(i);
+        list.sort((o1, o2) -> o1[0] != o2[0] ? o1[0] - o2[0] : o2[1] - o1[1]);
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < people.length; i++) ans.add(i);
+        int[][] res = new int[people.length][2];
+        for (int i = 0; i < people.length; i++) {
+            res[ans.get(list.get(i)[1])] = list.get(i);
             ans.remove(list.get(i)[1]);
         }
         return res;
     }
 
     public static void main(String[] args) {
-        int[][] people={{7,0},{4,4},{7,1},{5,0},{6,1},{5,2}};
-        Solution201116 s=new Solution201116();
+        int[][] people = {{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
+        Solution201116 s = new Solution201116();
         s.reconstructQueue(people);
     }
 

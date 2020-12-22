@@ -21,18 +21,17 @@ import java.util.*;
 
 public class Solution201214 {
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String,List<String>> map=new HashMap<>();
-        for(String str:strs){
-            char[] chs=str.toCharArray();
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] chs = str.toCharArray();
             Arrays.sort(chs);
-            String t= String.valueOf(chs);
-            if(map.containsKey(t)){
+            String t = String.valueOf(chs);
+            if (map.containsKey(t)) {
                 map.get(t).add(str);
-            }
-            else{
-                List<String> list=new ArrayList<>();
+            } else {
+                List<String> list = new ArrayList<>();
                 list.add(str);
-                map.put(t,list);
+                map.put(t, list);
             }
         }
         List<List<String>> res = new ArrayList<>(map.values());

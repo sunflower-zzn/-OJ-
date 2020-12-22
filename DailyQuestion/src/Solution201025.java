@@ -26,51 +26,49 @@ import java.util.List;
 
 public class Solution201025 {
     public int longestMountain(int[] A) {
-        if(A.length<3)return 0; // 山脉的最小长度为3，不满足直接返回0
-        int res=0;
-        int frontfoot=-1;  // frontfoot表示山脚，如果=-1则为左边，>-1则为右边
-        if(A[0]<A[1])frontfoot=0;  //处理第一个A[0]
-        for(int i=1;i<A.length-1;i++){
-            if(frontfoot==-1){
+        if (A.length < 3) return 0; // 山脉的最小长度为3，不满足直接返回0
+        int res = 0;
+        int frontfoot = -1;  // frontfoot表示山脚，如果=-1则为左边，>-1则为右边
+        if (A[0] < A[1]) frontfoot = 0;  //处理第一个A[0]
+        for (int i = 1; i < A.length - 1; i++) {
+            if (frontfoot == -1) {
                 //左山脚情况
-                if(A[i]<=A[i-1]&&A[i]<A[i+1]) {
-                    frontfoot=i;
+                if (A[i] <= A[i - 1] && A[i] < A[i + 1]) {
+                    frontfoot = i;
                 }
-            }
-            else{
+            } else {
                 //山中出现相等，不构成山，清空左山脚
-                if(A[i]==A[i-1]){
-                    frontfoot=-1;
+                if (A[i] == A[i - 1]) {
+                    frontfoot = -1;
                 }
                 //下降并跟后一个相等，只能是右山脚，清空山脚
-                else if(A[i]<A[i-1]&&A[i]==A[i+1]) {
-                    res=Math.max((i-frontfoot+1),res);
-                    frontfoot=-1;
+                else if (A[i] < A[i - 1] && A[i] == A[i + 1]) {
+                    res = Math.max((i - frontfoot + 1), res);
+                    frontfoot = -1;
                 }
                 //v字型，既是右山脚又是下一个左山脚
-                else if(A[i]<A[i-1]&&A[i]<A[i+1]) {
-                    res=Math.max((i-frontfoot+1),res);
-                    frontfoot=i;
+                else if (A[i] < A[i - 1] && A[i] < A[i + 1]) {
+                    res = Math.max((i - frontfoot + 1), res);
+                    frontfoot = i;
                 }
             }
 
         }
-        if(A[A.length-1]<A[A.length-2]){
-            if(frontfoot>-1){
-                res=Math.max((A.length-1-frontfoot+1),res);
-                frontfoot=-1;
+        if (A[A.length - 1] < A[A.length - 2]) {
+            if (frontfoot > -1) {
+                res = Math.max((A.length - 1 - frontfoot + 1), res);
+                frontfoot = -1;
             }
         }
         return res;
     }
 
     public static void main(String[] args) {
-        int A[]={875,884,239,731,723,685};
-        Solution201025 s=new Solution201025();
-        int result=s.longestMountain(A);
+        int A[] = {875, 884, 239, 731, 723, 685};
+        Solution201025 s = new Solution201025();
+        int result = s.longestMountain(A);
         System.out.println(result);
     }
-
 
 
 }

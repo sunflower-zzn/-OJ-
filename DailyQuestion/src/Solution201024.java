@@ -25,24 +25,24 @@
 
 public class Solution201024 {
     public int videoStitching(int[][] clips, int T) {
-            int res=0;
-            int ans=T;
-            while(ans>0){
-                ans=findMaxFormEnd(clips,ans);
-                res++;
-            }
-            if(ans==-1)return -1;
-            return res;
+        int res = 0;
+        int ans = T;
+        while (ans > 0) {
+            ans = findMaxFormEnd(clips, ans);
+            res++;
+        }
+        if (ans == -1) return -1;
+        return res;
     }
 
-    public int findMaxFormEnd(int[][] clips, int ans){
-        int templen=0;
-        for(int i=0;i<clips.length;i++){
-            if(clips[i][1]>=ans){
-                if((ans-clips[i][0])>templen)templen=ans-clips[i][0];
+    public int findMaxFormEnd(int[][] clips, int ans) {
+        int templen = 0;
+        for (int i = 0; i < clips.length; i++) {
+            if (clips[i][1] >= ans) {
+                if ((ans - clips[i][0]) > templen) templen = ans - clips[i][0];
             }
         }
-        if(templen==0)return -1;
-        return ans-templen;
+        if (templen == 0) return -1;
+        return ans - templen;
     }
 }

@@ -39,27 +39,24 @@ import java.util.Arrays;
 
 public class Solution201210 {
     public boolean lemonadeChange(int[] bills) {
-        int[] count=new int[3];     //count 5,10,20
-        Arrays.fill(count,0);
-        for(int bill:bills){
-            if(bill==5){
+        int[] count = new int[3];     //count 5,10,20
+        Arrays.fill(count, 0);
+        for (int bill : bills) {
+            if (bill == 5) {
                 count[0]++;
-            }
-            else if(bill==10){
+            } else if (bill == 10) {
                 count[1]++;
                 count[0]--;
-                if(count[0]<0)return false;
-            }
-            else{
+                if (count[0] < 0) return false;
+            } else {
                 count[2]++;
-                if(count[1]>0){
+                if (count[1] > 0) {
                     count[1]--;
                     count[0]--;
+                } else {
+                    count[0] -= 3;
                 }
-                else{
-                    count[0]-=3;
-                }
-                if(count[0]<0)return false;
+                if (count[0] < 0) return false;
             }
         }
         return true;

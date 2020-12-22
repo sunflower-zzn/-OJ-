@@ -40,40 +40,40 @@
 
 public class Solution201118 {
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        /*
+/*
         //朴素的遍历思路，从每个可能的加油站出发，看是否能走通
-        int[] ans=new int[gas.length];   //维护ans数组保存每一站的净油量=加油量-耗油量
-        for(int i=0;i<ans.length;i++){
-            ans[i]=gas[i]-cost[i];
+        int[] ans = new int[gas.length];   //维护ans数组保存每一站的净油量=加油量-耗油量
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = gas[i] - cost[i];
         }
-        for(int i=0;i<ans.length;i++){
-            if(ans[i]>=0){
-                int temp=ans[i];
-                int idx=i+1;
-                while(temp>=0 && idx<i+ans.length){
-                    temp+=ans[idx%ans.length];
+        for (int i = 0; i < ans.length; i++) {
+            if (ans[i] >= 0) {
+                int temp = ans[i];
+                int idx = i + 1;
+                while (temp >= 0 && idx < i + ans.length) {
+                    temp += ans[idx % ans.length];
                     idx++;
                 }
-                if(temp>=0 && idx==i+ans.length)return i;
+                if (temp >= 0 && idx == i + ans.length) return i;
             }
         }
         return -1;
-        */
+*/
 
         //特殊想法：如果有解，总油量应该具有变化应该为从0开始到0结束，且一直大于零的折线图
         //也就是说为起点就是最低点，只需要遍历一遍找到最低点，然后以那个点为0即可
-        int temp=0;
-        int min=gas[0]-cost[0];
-        temp+=min;
-        int index=0;
-        for(int i=1;i<gas.length;i++){
-            temp+=gas[i]-cost[i];
-            if(temp<min){
-                min=temp;
-                index=i;
+        int temp = 0;
+        int min = gas[0] - cost[0];
+        temp += min;
+        int index = 0;
+        for (int i = 1; i < gas.length; i++) {
+            temp += gas[i] - cost[i];
+            if (temp < min) {
+                min = temp;
+                index = i;
             }
         }
-        return temp<0?-1:(index+1)%gas.length;
+        return temp < 0 ? -1 : (index + 1) % gas.length;
 
     }
 

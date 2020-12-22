@@ -23,17 +23,17 @@ import java.util.*;
 public class Solution201028 {
     public boolean uniqueOccurrences(int[] arr) {
         //map统计每个元素出现次数
-        Map<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<arr.length;i++){
-            map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
         //set去除出现次数中的重复
-        Set<Integer> set=new HashSet<>();
-        for(Map.Entry<Integer,Integer> x:map.entrySet()){
+        Set<Integer> set = new HashSet<>();
+        for (Map.Entry<Integer, Integer> x : map.entrySet()) {
             set.add(x.getValue());
         }
         //比较set和map即可
-        return map.size()==set.size();
+        return map.size() == set.size();
 
     }
 }

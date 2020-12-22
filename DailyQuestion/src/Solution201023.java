@@ -14,9 +14,9 @@
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
  * }
  */
 
@@ -24,11 +24,14 @@ public class Solution201023 {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 
     public boolean isPalindrome(ListNode head) {
-        if(head==null || head.next==null)return true;
+        if (head == null || head.next == null) return true;
 
         /*
         // 使用栈，出栈顺序即为链表逆序，与链表对比即可
@@ -66,27 +69,27 @@ public class Solution201023 {
 
         // 时间复杂度O(n)，空间复杂度O(1)
         // 使用快慢指针确定链表中点，慢指针一次走一步，快指针一次走两步（奇数个节点，中间节点视为前半部分链表）
-        ListNode slow=head;
-        ListNode fast=head;
-        while(fast.next!=null && fast.next.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
         // 反转后半部分链表
         ListNode current = slow.next;
         ListNode previous = null;
-        ListNode tempnode=current;
-        while(current!=null){
-            tempnode=current.next;
-            current.next=previous;
-            previous=current;
-            current=tempnode;
+        ListNode tempnode = current;
+        while (current != null) {
+            tempnode = current.next;
+            current.next = previous;
+            previous = current;
+            current = tempnode;
         }
-        ListNode second_half_reverse_head=previous;
-        while(second_half_reverse_head!=null){
-            if(head.val!=second_half_reverse_head.val)return false;
-            second_half_reverse_head=second_half_reverse_head.next;
-            head=head.next;
+        ListNode second_half_reverse_head = previous;
+        while (second_half_reverse_head != null) {
+            if (head.val != second_half_reverse_head.val) return false;
+            second_half_reverse_head = second_half_reverse_head.next;
+            head = head.next;
         }
 
         return true;
@@ -94,17 +97,17 @@ public class Solution201023 {
 
     public static void main(String[] args) {
         Solution201023 p = new Solution201023();
-        Solution201023.ListNode head1=p.new ListNode(1);
-        Solution201023.ListNode node1=p.new ListNode(2);
-        Solution201023.ListNode head2=p.new ListNode(1);
-        Solution201023.ListNode node2=p.new ListNode(2);
-        Solution201023.ListNode node3=p.new ListNode(2);
-        Solution201023.ListNode node4=p.new ListNode(1);
+        Solution201023.ListNode head1 = p.new ListNode(1);
+        Solution201023.ListNode node1 = p.new ListNode(2);
+        Solution201023.ListNode head2 = p.new ListNode(1);
+        Solution201023.ListNode node2 = p.new ListNode(2);
+        Solution201023.ListNode node3 = p.new ListNode(2);
+        Solution201023.ListNode node4 = p.new ListNode(1);
 
-        head1.next=node1;
-        head2.next=node2;
-        node2.next=node3;
-        node3.next=node4;
+        head1.next = node1;
+        head2.next = node2;
+        node2.next = node3;
+        node3.next = node4;
 
         System.out.println(p.isPalindrome(head1));
         System.out.println(p.isPalindrome(head2));
