@@ -32,6 +32,9 @@ cols == matrix[0].length
 matrix[i][j] 为 '0' 或 '1'
 */
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Solution201226 {
     public int maximalRectangle(char[][] matrix) {
         if (matrix.length == 0) return 0;
@@ -64,24 +67,32 @@ public class Solution201226 {
 */
         //参考题目84：找出直方图中最大的矩形面积
         //我们可以从上到下依次将当前行作为直方图x轴
-        int[] height=new int[matrix[0].length];
-        for(int row=0;row<matrix.length;row++){
+        //前后两端各增加一个0，为了确定最左端和最右端以及最终清空栈
+        int[] height = new int[matrix[0].length + 2];
+        int res = 0;
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int row = 0; row < matrix.length; row++) {
             // 遍历每一行，构建/更新当前直方图
-            for(int col=0;col<matrix[0].length;col++){
-                if(matrix[row][col]=='1'){
-                    height[col]+=1;
-                }
-                else{
-                    height[col]=0;
+            for (int col = 0; col < matrix[0].length; col++) {
+                if (matrix[row][col] == '1') {
+                    height[col + 1] += 1;
+                } else {
+                    height[col + 1] = 0;
                 }
             }
-            //找出当前直方图的最大矩形面积
-
+            //找出当前直方图的最大矩形面积，参考第84题的单调栈
+            stack.clear();
+            for (int i = 0; i < height.length; i++) {
+                while (!stack.isEmpty() && height[stack.peek()] > height[i]) {
+                    int cur = stack.pop();
+                    int left = stack.peek();
+                    int right = i;
+                    res = Math.max(res, (right - left - 1) * height[cur]);
+                }
+                stack.push(i);
+            }
         }
-
-
-
-
+        return res;
     }
 
 }
