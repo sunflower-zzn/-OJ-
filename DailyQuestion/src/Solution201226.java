@@ -32,8 +32,7 @@ cols == matrix[0].length
 matrix[i][j] 为 '0' 或 '1'
 */
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 public class Solution201226 {
     public int maximalRectangle(char[][] matrix) {
@@ -94,5 +93,4 @@ public class Solution201226 {
         }
         return res;
     }
-
 }
