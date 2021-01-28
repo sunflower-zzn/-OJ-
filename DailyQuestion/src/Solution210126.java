@@ -36,10 +36,4 @@ public class Solution210126 {
         }
         return result;
     }
-
-    public static void main(String[] args) {
-        Solution210126 s = new Solution210126();
-        int[][] dominoes = {{1, 2}, {2, 1}, {3, 4}};
-        s.numEquivDominoPairs(dominoes);
-    }
 }
