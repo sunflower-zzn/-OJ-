@@ -30,30 +30,50 @@ kthLargest.add(4);   // return 8
 题目数据保证，在查找第 k 大元素时，数组中至少有 k 个元素
 */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Solution210211 {
+/*    //list暴力做法，每次都重新排序
     List<Integer> list;
     int k;
 
     public Solution210211(int k, int[] nums) {
-        this.k=k;
-        list=new ArrayList<>();
-        for(int num:nums)list.add(num);
+        this.k = k;
+        list = new ArrayList<>();
+        for (int num : nums) list.add(num);
     }
 
     public int add(int val) {
         list.add(val);
         list.sort(Integer::compareTo);
-        return list.get(list.size()-k);
+        return list.get(list.size() - k);
+    }*/
+
+    //优先级队列
+    Queue<Integer> queue;
+    int k;
+
+    public Solution210211(int k, int[] nums) {
+        this.k = k;
+        queue = new PriorityQueue<>();
+        for (int i = 0; i < nums.length; i++) {
+            add(nums[i]);
+        }
+
+    }
+
+    public int add(int val) {
+        queue.add(val);
+        if (queue.size() > k) {
+            queue.poll();
+        }
+        return queue.peek();
     }
 
     public static void main(String[] args) {
         Solution210211 s=new Solution210211(3, new int[]{4, 5, 8, 2});
         s.add(3);
         s.add(5);
-
     }
 }
