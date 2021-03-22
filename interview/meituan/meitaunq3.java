@@ -21,7 +21,7 @@ import java.util.Scanner;
  * 样例输出
  * 4
  */
-public class Q3 {
+public class meitaunq3 {
     public static class Main {
         public static void test() {
             Scanner sc = new Scanner(System.in);

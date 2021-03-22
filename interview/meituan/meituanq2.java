@@ -23,7 +23,7 @@ import java.util.Scanner;
  * 样例输出
  * 7
  */
-public class Q2 {
+public class meituanq2 {
     public static class Main {
         public static void test() {
             //两个队列，队列a每次全体+1，直到a==b
