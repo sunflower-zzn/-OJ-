@@ -16,16 +16,7 @@
  * 0 <= k <= 2 * 109
  */
 public class Solution210327 {
-    public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        ListNode cur = head;
-        cur.next = new ListNode(2);
-        cur = cur.next;
-        cur.next = new ListNode(3);
-        rotateRight(head, 4);
-    }
-
-    public static ListNode rotateRight(ListNode head, int k) {
+    public ListNode rotateRight(ListNode head, int k) {
         if (head == null || k == 0) return head;
         int len = 0;
         ListNode cur = head;
