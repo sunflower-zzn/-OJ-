@@ -1,6 +1,6 @@
 /**
  * @Author sunflower_zzn
- * @Date 2021/3/30 14:04
+ * @Date 2021/3/29 14:04
  * @Description 190. 颠倒二进制位
  * 颠倒给定的 32 位无符号整数的二进制位。
  * <p>
